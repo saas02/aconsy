@@ -13,8 +13,8 @@
 
 	
 	<?php 
-	include("\web-app\header.php");
-	include("\web-app\sidebar.php");
+	include("web-app/header.php");
+	include("web-app/sidebar.php");
 	?>
 
           <div class="hero-unit">
@@ -63,7 +63,7 @@
           </div>
        
 	<?php 
-		include("/web-app/footer.php");
+		include("web-app/footer.php");
 	?>
   </body>
 </html>

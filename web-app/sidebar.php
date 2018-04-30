@@ -19,7 +19,7 @@
       <li><a href="/ACONSY/jornada/administrarJornada.php">Jornadas</a></li>
 	</ul>
   </div><!--/.well -->
-  <img src="/ACONSY/web-app/img/aconsy sin fondo.png" />
+  <img src="/web-app/img/aconsysinfondo.png" />
 </div><!--/span-->
 <div class="span9"><!--inicio columna derecha-->
 		

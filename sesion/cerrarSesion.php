@@ -37,7 +37,7 @@
 			echo 
 			"<script language='JavaScript'> 
 			alert('Sesión cerrada satisfactoriamente'); 
-			window.location='/ACONSY/index.php';
+			window.location='../';
 			</script>";
 
     ?>	

@@ -27,7 +27,7 @@
 		  	<?php
 			session_start();
 				if (isset($_SESSION['rol'])){
-					echo "Sesi&oacute;n iniciada como <a href='\Aconsy\web-app\datos.php' class='navbar-link'>".$_SESSION['nombre']."</a>, <a href='./sesion/cerrarSesion.php' >Cerrar Sesi&oacute;n </a></p>";
+					echo "Sesi&oacute;n iniciada como <a href='./web-app/datos.php' class='navbar-link'>".$_SESSION['nombre']."</a>, <a href='/../sesion/cerrarSesion.php' >Cerrar Sesi&oacute;n </a></p>";
 				}else{
 					echo "<a href='./sesion/iniciarSesion.php'> Iniciar Sesi&oacute;n </a></p>";
 					}

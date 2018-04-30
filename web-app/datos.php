@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("header.php");
+	include("sidebar.php"); 
 	?>
     
     
@@ -26,7 +26,7 @@
 	<?php 
 	@session_start();
         $cedula=$_SESSION['cedula'];
-        include("\..\web-app\conexion.php");
+        include("conexion.php");
 	$link=Conectar();	
 	$datos = query("SELECT id_usuario,contrasena,nombres,primer_apellido,segundo_apellido,telefono,celular,extension,direccion FROM usuario where cedula=".$cedula."", $link);
 	$datosUsuario=mysql_fetch_array($datos);

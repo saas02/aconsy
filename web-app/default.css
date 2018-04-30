@@ -1,0 +1,19 @@
+/* CSS Document */
+
+@import "css/bootstrap-responsive.css"; 
+@import "css/bootstrap.css";
+
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+  
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+.main{
+	background-image:url(/ACONSY/web-app/img/aconsy.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	}

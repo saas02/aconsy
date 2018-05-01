@@ -44,81 +44,83 @@
 			include("../web-app/conexion.php");
 			$link=Conectar();  
 			$cc_usu=$_POST["cc_usuario"];
-			@$variable=$_POST["variable"];
+			@$variable=$_POST["variable"];                          
 			$Sql="select id_usuario from usuario where cedula = ".$cc_usu." ";
-			$result=query($Sql,$link);
-			$id_usu = mysql_fetch_array($result);
-			$x=mysql_num_rows($result);
-		
+			$result=$link->query($Sql);
+			$id_usu = $result->fetch_all(MYSQLI_ASSOC);
+			$x=count($result);
+                        
 			if ($x==0){
-			if ($variable==0){
+                            if ($variable==0){
 				echo "
 				<script language='JavaScript'>
 				alert('Usuario no registrado Vuelva intente');
 				window.location='ingresoUsuarios.php';
 				</script>";  
-				}else{
+                            }else{
 				echo "
 				<script language='JavaScript'>
 				alert('Usuario no registrado Vuelva intente');
 				window.location='ingresoAutomatico.php';
 				</script>"; 
 				
-				}
+                            }
 			}else{ 
 				date_default_timezone_set("America/Bogota" ) ; 		
 				$diaactual=date("Y-m-d");
 				$hora = date('H:i:s',time());
-				$fecha=($diaactual." ".$hora);												
+				$fecha=($diaactual." ".$hora);	                                
 				$Sql1="select max(id_ingreso) from ingreso";
-				$reultmax_id_ingreso=query($Sql1,$link); 
-				$datos_max_id_ingreso=mysql_fetch_array($reultmax_id_ingreso);
-				$max_id_ingreso=($datos_max_id_ingreso[0])+1;
+				$reultmax_id_ingreso=$link->query($Sql1); 
+				$datos_max_id_ingreso=$reultmax_id_ingreso->fetch_all(MYSQLI_ASSOC);                                
+				$max_id_ingreso=($datos_max_id_ingreso[0]['max(id_ingreso)'])+1;
 				                                    
-				$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_usuario iu inner join usuario uu on iu.id_usuario = uu.id_usuario where uu.cedula = ".$cc_usu."  and iu.id_ingreso = ing.id_ingreso and ing.fecha_salida = '0000-00-00 00:00:00'";
-				$result=query($sql,$link);
-				$ingreso = mysql_fetch_array($result); 
-				$y=mysql_num_rows($result);
+				$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_usuario iu inner join usuario uu on iu.id_usuario = uu.id_usuario where uu.cedula = ".$cc_usu."  and iu.id_ingreso = ing.id_ingreso and ing.fecha_salida = 'NULL'";
+				$result=$link->query($sql);
+				$ingreso = $result->fetch_all(MYSQLI_ASSOC);                                 
+				$y=count($ingreso);                                                                   
 				if($y==0){
-					$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."','----')";
-					$result=query($sql,$link);
-					$sql = "insert into ingreso_usuario values (".$id_usu[0].",".$max_id_ingreso.")";
-					$result=query($sql,$link);
+					$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."', null)";
+					$result=$link->query($sql);                                         
+					$sql = "insert into ingreso_usuario values (".$id_usu[0]['id_usuario'].",".$max_id_ingreso.")";
+					$result=$link->query($sql);                                                                                                                        
 					if ($variable==0){
-					echo "
+                                            echo "
 						<script language='JavaScript'>
 						alert('Entro');
 						</script>"; }
-					}else{
+					}else{                                                
 						$sql = "update ingreso set fecha_salida='".$fecha."' where id_ingreso = ".$ingreso[0]."";
-						$result=query($sql,$link);
+						$result=$link->query($sql);
+                                                
 						if ($variable==0){
-						echo "
-						<script language='JavaScript'>
-						alert('Salio');
-						</script>";
-						$rol = query("SELECT rol.id_rol FROM rol,usuario_rol,usuario WHERE rol.id_rol=usuario_rol.id_rol AND usuario_rol.id_usuario=usuario.id_usuario and usuario.cedula=".$cc_usu."", $link);
-                        $usuario_rol=mysql_fetch_array($rol);
-                        $idRol=$usuario_rol[0]; 
-                        if ($idRol=="6")
-                            {
-                            $state="0";
-                            $estado = query("UPDATE usuario set estado='".$state."' where cedula=".$cc_usu."", $link);
-                            }   else {}
-										}
-						}
-						if ($variable==0){
-				echo "
-				<script language='JavaScript'>
-				window.location='ingresoUsuarios.php';
-				</script>";
-				}else{
-				echo "
-				<script language='JavaScript'>
-				window.location='ingresoAutomatico.php';
-				</script>";
-				}
-				}
+                                                    echo "
+                                                    <script language='JavaScript'>
+                                                    alert('Salio');
+                                                    </script>";
+						$rol = $link->query("SELECT rol.id_rol FROM rol,usuario_rol,usuario WHERE rol.id_rol=usuario_rol.id_rol AND usuario_rol.id_usuario=usuario.id_usuario and usuario.cedula=".$cc_usu."");
+                                                $usuario_rol=$rol->fetch_all(MYSQLI_ASSOC);
+                                                $idRol=$usuario_rol[0]; 
+                                                    if ($idRol=="6"){
+                                                        $state="0";
+                                                        $estado = query("UPDATE usuario set estado='".$state."' where cedula=".$cc_usu."", $link);
+                                                    }else {
+                                                            
+                                                    }
+                                                }
+                                        }
+                                        if ($variable==0){
+                                            echo "
+                                            <script language='JavaScript'>
+                                            window.location='ingresoUsuarios.php';
+                                            </script>";
+                                        }else{
+                                            echo "
+                                            <script language='JavaScript'>
+                                            window.location='ingresoAutomatico.php';
+                                            </script>";
+                                        }
+                        }
 				
 				?>
                                  

@@ -1,37 +1,35 @@
 <html>
-<head>
-   <title>Conexion</title>
-   <link href="default.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<?php
+    <head>
+        <title>Conexion</title>
+        <link href="default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <?php
+        define('DB_HOST', '127.0.0.1');
+        define('DB_USER', 'root');
+        define('DB_PASS', '');
+        define('DB_NAME', 'aconsy');
+        define('DB_CHARSET', 'utf-8');
 
-define('DB_HOST','127.0.0.1'); 
-define('DB_USER','root'); 
-define('DB_PASS',''); 
-define('DB_NAME','aconsy'); 
-define('DB_CHARSET','utf-8'); 
+        function Conectar() {
 
-function Conectar(){
+            $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-   $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME); 
+            /* if (!($link=mysql_connect("localhost","root",""))){
+              echo "Error de conexi&oacuten a la base de datos";
+              exit();
+              }
+              if (!mysql_select_db("aconsy",$link)){
+              echo "Error al seleccionar la base de datos.";
+              exit();
+              }
+              $link=mysql_connect("localhost","root","");
+              mysql_select_db("aconsy",$link);
+              return $link; */
+            return $link;
+        }
 
-   /*if (!($link=mysql_connect("localhost","root",""))){
-      echo "Error de conexi&oacuten a la base de datos";
-      exit();
-   }
-   if (!mysql_select_db("aconsy",$link)){
-      echo "Error al seleccionar la base de datos.";
-      exit();
-   }
-   	$link=mysql_connect("localhost","root","");
-	mysql_select_db("aconsy",$link);
-   	return $link;*/
-   return $link;
-   
-}
-
-Conectar();
-?>
-</body>
+        Conectar();
+        ?>
+    </body>
 </html>

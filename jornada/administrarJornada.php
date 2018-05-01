@@ -44,15 +44,15 @@
    	</p>
 	</div>
     <?php
-		$Sql1="select nombre from jornada ";
-		$result_query=query($Sql1,$link);
+		$Sql1=$link->query("select id_jornada, nombre from jornada ");
+		$arregloconsulta = $Sql1->fetch_all(MYSQLI_ASSOC); 
+		$x=count($arregloconsulta);//contar los datos de un arreglo
+		/*$result_query=query($Sql1,$link);
 		while ($datosid_jornada[] = mysql_fetch_array($result_query)){}
 		$Sql="select id_jornada from jornada ";
 		$result=query($Sql,$link); 
-		$x=mysql_num_rows($result);
-		
-		
-		
+		$x=mysql_num_rows($result);*/
+					
 	?>
 
 	<form name='jornada' action="administrarJornadaVer.php" method="post">
@@ -68,7 +68,8 @@
                     <table align="center" border="0">
                         <tr>
                             <td colspan="2">
-                                <select name='Tipo_jornada' size='1'>
+
+                                <select name='id_jornada' size='1'>
                                 	<?php
 										if ($x==0)
 										{
@@ -76,12 +77,11 @@
 											<option value=''>";
 										}
 				 						else
-										{
-                     						for($i=0; $i<$x; $i++)
-											{
+										{																								
+											foreach($arregloconsulta as $key => $arreglo){												
 												echo "
-													<option value='".$datosid_jornada[$i][0]."'> ".$datosid_jornada[$i][0]."";
-											}
+													<option value='".$arreglo['id_jornada']."'> ".$arreglo['nombre']."";
+											}	
 										}
                                     ?> 
 								</select>

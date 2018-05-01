@@ -75,21 +75,24 @@
 		 document.jornada.h_salida2.value="";
 		 }
    </SCRIPT>
-    <?php
-	$Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where nombre = '".$_POST['Tipo_jornada']."'";
-			$reultmax_id_vehiculo=query($Sql1,$link); 
-			$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
-			$idjornada=$datos_max_id_vehiculo[0];
-			$nombre=$datos_max_id_vehiculo[1];
-			$hentrada=$datos_max_id_vehiculo[2];
-			$hsalida=$datos_max_id_vehiculo[3];
-			$Sql1="SELECT RIGHT( hora_entrada, 2 ) , RIGHT( hora_salida, 2 ), LEFT( hora_entrada, 2 ) , LEFT( hora_salida, 2 ) FROM jornada where nombre = '".$_POST['Tipo_jornada']."'";
-			$reultmax_id_vehiculo=query($Sql1,$link); 
-			$datos_max_id=mysql_fetch_array($reultmax_id_vehiculo);
-			$hentrada2=$datos_max_id[0];
-			$hsalida2=$datos_max_id[1];
-			$hentrada1=$datos_max_id[2];
-			$hsalida1=$datos_max_id[3];
+    <?php                        
+            $Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where id_jornada = ".$_POST['id_jornada']."";
+			$reultmax_id_vehiculo=$link->query($Sql1);
+                        $arregloconsulta = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC); 
+                        //$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
+			$idjornada=$arregloconsulta[0]['id_jornada'];
+			$nombre=$arregloconsulta[0]['nombre'];
+			$hentrada=$arregloconsulta[0]['hora_entrada'];
+			$hsalida=$arregloconsulta[0]['hora_salida'];
+			$Sql1="SELECT RIGHT( hora_entrada, 2 ) , RIGHT( hora_salida, 2 ), LEFT( hora_entrada, 2 ) , LEFT( hora_salida, 2 ) FROM jornada where id_jornada = ".$_POST['id_jornada']."";
+			$reultmax_id_vehiculo=$link->query($Sql1);
+                        //$reultmax_id_vehiculo=query($Sql1,$link); 
+			//$datos_max_id=mysql_fetch_array($reultmax_id_vehiculo);
+                        $datos_max_id = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC);                         
+			$hentrada2=$datos_max_id[0]['RIGHT( hora_entrada, 2 )'];
+                        $hsalida2=$datos_max_id[0]['RIGHT( hora_salida, 2 )'];
+			$hentrada1=$datos_max_id[0]['LEFT( hora_entrada, 2 )'];
+			$hsalida1=$datos_max_id[0]['LEFT( hora_salida, 2 )'];
 			
 		
  ?>

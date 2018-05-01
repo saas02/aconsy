@@ -46,7 +46,7 @@
 		
 			$consulta = $link->query("SELECT estado FROM usuario WHERE cedula ='".$_POST["Cedula"]."'");
             $arregloconsulta = $consulta->fetch_all(MYSQLI_ASSOC);                    			
-			
+			var_dump($arregloconsulta[0],);die;
 			if($arregloconsulta[0]['estado']==0)
 				{
 					echo "<script language='JavaScript'> 

@@ -43,41 +43,50 @@
 	</div>
     <?php
 	if(isset($_POST['Tipo_jornada'])){
-			$Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where nombre = '".$_POST['Tipo_jornada']."'";
-			$reultmax_id_vehiculo=query($Sql1,$link); 
-			$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
-			$idjornada=$datos_max_id_vehiculo[0];
-			$nombre=$datos_max_id_vehiculo[1];
-			$hentrada=$datos_max_id_vehiculo[2];
-			$hsalida=$datos_max_id_vehiculo[3];
+			$Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where id_jornada = '".$_POST['Tipo_jornada']."'";
+			$reultmax_id_vehiculo=$link->query($Sql1); 
+			$arregloconsulta = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC);  
+			//$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
+			$idjornada=$arregloconsulta[0]['id_jornada'];
+			$nombre=$arregloconsulta[0]['nombre'];
+			$hentrada=$arregloconsulta[0]['hora_entrada'];
+			$hsalida=$arregloconsulta[0]['hora_salida'];
+			
+			
+			
+			
 		}
 	if(isset($_POST['id_jornada'])){
 			$idjornada=$_POST['id_jornada'];
 			$nombre=$_POST['nombre'];
 			$hentrada=$_POST['h_entrada1'].":".$_POST['h_entrada2'];
 			$hsalida=$_POST['h_salida1'].":".$_POST['h_salida2'];
-		$Sql = query("UPDATE jornada set nombre='".$nombre."', hora_entrada='".$hentrada."', hora_salida='".$hsalida."' where id_jornada='".$idjornada."'");
-		query($Sql,$link);
-		
+		$Sql = $link->query("UPDATE jornada set nombre='".$nombre."', hora_entrada='".$hentrada."', hora_salida='".$hsalida."' where id_jornada='".$idjornada."'");
+//		var_dump($Sql);die;
+		//query($Sql,$link);
+				
 		echo 
 		  "<script language='JavaScript'> 
 		  alert('Edicion con Exito'); 
 		  </script>";
-		$Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where id_jornada = '".$_POST['id_jornada']."'";
-			$reultmax_id_vehiculo=query($Sql1,$link); 
-			$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
-			$idjornada=$datos_max_id_vehiculo[0];
-			$nombre=$datos_max_id_vehiculo[1];
-			$hentrada=$datos_max_id_vehiculo[2];
-			$hsalida=$datos_max_id_vehiculo[3];			
+		$Sql1="select id_jornada, nombre, hora_entrada, hora_salida from jornada where id_jornada = ".$_POST['id_jornada']."";
+			$reultmax_id_vehiculo=$link->query($Sql1); 
+			$arregloconsulta = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC);
+			//$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);                        
+			$idjornada=$arregloconsulta[0]['id_jornada'];
+			$nombre=$arregloconsulta[0]['nombre'];
+			$hentrada=$arregloconsulta[0]['hora_entrada'];
+			$hsalida=$arregloconsulta[0]['hora_salida'];			
 		}
+               
 		if(isset($_POST['id_jornadaVer'])){
 			$idjornada=$_POST['id_jornadaVer'];
 			$nombre=$_POST['nombre'];
 			$hentrada=$_POST['h_entrada1'].":".$_POST['h_entrada2'];
 			$hsalida=$_POST['h_salida1'].":".$_POST['h_salida2'];
-			$Sql="insert into jornada (id_jornada,nombre,hora_entrada,hora_salida)  values ('".$idjornada."','".$nombre."','".$hentrada."','".$hsalida."')";
-			query($Sql,$link);
+			$Sql= $link->query("insert into jornada (id_jornada,nombre,hora_entrada,hora_salida)  values (".$idjornada.",'".$nombre."','".$hentrada."','".$hsalida."')");
+			//query($Sql);
+                        
 		echo 
 		  "<script language='JavaScript'> 
 		  alert('creado'); 
@@ -100,7 +109,7 @@
 								Id Jornada
                             </td>
                             <td>
-                                <input onFocus="blur()" type="text" name="id_garaje"  value="<?php echo $idjornada ?>" />
+                                <input onFocus="blur()" type="text" name="id_jornada"  value="<?php echo $idjornada ?>" />
                             </td>
 						</tr>
 						<tr>

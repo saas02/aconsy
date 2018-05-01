@@ -28,17 +28,17 @@ include(DIRURL . "web-app/sidebar.php");
         <div class="span4">
             <h2>Ingresos</h2>
             <p>Este servicio permite al sistema hacer registros automáticos de ingreso y salida de personas a la institución, mediante un lector de códigos de barras o biométrico, dependiendo de las necesidades y recursos proporcionados.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/ingreso/ingresoAutomatico.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/ingreso/ingresoAutomatico.php">Continuar &raquo;</a></p>
         </div><!--/span-->
         <div class="span4">
             <h2>Elementos</h2>
             <p>El registro de elementos a la institución es una de las principales características de ACONSY. A través del número de identificación del usuario o de codigos de barras especificos para cada elemento, se llevara un registro de elementos dentro de la organización.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/elemento/registrarElementos.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/elemento/registrarElementos.php">Continuar &raquo;</a></p>
         </div><!--/span-->
         <div class="span4">
             <h2>Vehiculos</h2>
             <p>El sistema muestra y registra los datos de los vehículos que ingresen a la institución pertenecientes a un usuario, o cambiar uno ya existente, asignando un garaje según la jornada y la disponibilidad de la organización.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/vehiculo/registrarVehiculos.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/vehiculo/registrarVehiculos.php">Continuar &raquo;</a></p>
         </div><!--/span-->
     </div><!--/row-->
 
@@ -47,17 +47,17 @@ include(DIRURL . "web-app/sidebar.php");
         <div class="span4">
             <h2>Garajes</h2>
             <p>Permite asignar nuevos garajes según nuevos espacios que brinde la institución o espacios que no se encuentren registrados, también se puede ver la disponibilidad que tiene cada garaje en un horario determinado.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/garaje/asignarGaraje.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/garaje/asignarGaraje.php">Continuar &raquo;</a></p>
         </div><!--/span-->
         <div class="span4">
             <h2>Reportes</h2>
             <p> Los Reportes del Sistema ACONSY permiten brindar una serie de consultas y reportes de control que son de gran ayuda para la administración de los usuarios. Pueden ser filtrados por rango de fechas facilitando la selección del período.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/reportes/generarReportes.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/reportes/generarReportes.php">Continuar &raquo;</a></p>
         </div><!--/span-->
         <div class="span4">
             <h2>Visitantes</h2>
             <p>Desde este servicio se deben registrar todas aquellas personas que ingresen a la institución, permitiendo tener un registro de la hora de entrada y de salida de estas personas, brindando control y seguridad del personal.</p>
-            <p><a class="btn btn-inverse" href="/aconsy/usuario/registrarVisitantes.php">Continuar &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="/usuario/registrarVisitantes.php">Continuar &raquo;</a></p>
         </div><!--/span-->
     </div><!--/row-->
 </div>

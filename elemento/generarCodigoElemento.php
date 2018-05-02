@@ -1,7 +1,11 @@
 <?php
 require_once('..\web-app\pdf\fpdf.php');
-$link=mysql_connect("localhost","root","");
-mysql_select_db("aconsy", $link); 
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'aconsy');
+define('DB_CHARSET', 'utf-8');
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 class PDF extends FPDF
 {

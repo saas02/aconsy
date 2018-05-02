@@ -45,9 +45,9 @@
 	if(isset($_POST["ced"]) && $_POST["ced"]!=""){
 		$cc_user = $_POST["ced"];
 		$sql = "select id_usuario from usuario where cedula ='".$cc_user."'";
-		$result=query($sql,$link);
+		$result=$link->query($sql);
 		
-		$id_user=mysql_fetch_array($result);
+		$id_user=$result->fetch_all(MYSQLI_ASSOC);
 		
 		if($id_user == false){
 			echo 	"<script language='JavaScript'> 
@@ -55,9 +55,11 @@
 						window.location='registrarElementos.php';
 					</script>"; 
 		}
-		$sql2= "select distinct elemento.id_elemento, tipo, marca, serial, descripcion, id_usuario, codigo_barras from elemento inner join usuario_elemento on id_usuario = ".$id_user[0]." and elemento.id_elemento = usuario_elemento.id_elemento";
-		$result=query($sql2,$link);
-		while ( $row = mysql_fetch_array($result) ){
+		$sql2= "select distinct elemento.id_elemento, tipo, marca, serial, descripcion, id_usuario, codigo_barras from elemento inner join usuario_elemento on id_usuario = ".$id_user[0]['id_usuario']." and elemento.id_elemento = usuario_elemento.id_elemento";
+		$result=$link->query($sql2);
+		$rows=$result->fetch_all(MYSQLI_ASSOC);
+		
+		foreach($rows as $row){
 			echo "<tr><td><div class='alert alert-error'><form name='elemento".$row["id_elemento"]."' action='ingresarElemento.php' method='POST'>    
 				<fieldset width='200' height='50'><legend>Datos del ".$row["tipo"]."</legend><table align='center' border='0'>";			
 			echo "	<tr>
@@ -96,15 +98,13 @@
 					</form>
 					</td></tr>
 					";
-					 
-		   }
+		}		
 	}else{
 		if(isset($_POST["serial"])&& $_POST["serial"]!=""){
 			$serial = $_POST["serial"];
 			$sql = "select id_elemento from elemento where serial = '".$serial."'";
-			$result=query($sql,$link);
-				
-			$id_equip=mysql_fetch_array($result);
+			$result=$link->query($sql);				
+			$id_equip=$result->fetch_all(MYSQLI_ASSOC);
 			
 			if($id_equip == false){
 				echo 	"<script language='JavaScript'> 
@@ -112,12 +112,13 @@
 							window.location='registrarElementos.php';
 						</script>"; 
 			}
-			$sql2= "select elemento.id_elemento, tipo, marca, serial, descripcion, id_usuario, codigo_barras from elemento inner join usuario_elemento on elemento.id_elemento = ".$id_equip[0]." and elemento.id_elemento = usuario_elemento.id_elemento";
-			$result=query($sql2,$link);
-			while ( $row = mysql_fetch_array($result) ){
-			echo "<tr><td><div class='alert alert-error'><table align='center' border='0'>";
-			echo "<tr><td><form name='elemento".$row["id_elemento"]."' action='ingresarElemento.php' method='POST'><fieldset width='200' height='50'><legend>Datos del ".$row["tipo"]."</legend><table align='center' border='0'>";			
-			echo "	<tr>
+			$sql2= "select elemento.id_elemento, tipo, marca, serial, descripcion, id_usuario, codigo_barras from elemento inner join usuario_elemento on elemento.id_elemento = ".$id_equip[0]['id_elemento']." and elemento.id_elemento = usuario_elemento.id_elemento";
+			$result=$link->query($sql2);
+			$rows=$result->fetch_all(MYSQLI_ASSOC);
+			foreach($rows as $row){
+				echo "<tr><td><div class='alert alert-error'><table align='center' border='0'>";
+				echo "<tr><td><form name='elemento".$row["id_elemento"]."' action='ingresarElemento.php' method='POST'><fieldset width='200' height='50'><legend>Datos del ".$row["tipo"]."</legend><table align='center' border='0'>";			
+				echo "	<tr>
 						<td><label>ID</label></td>
 						<td> <input type='text' name='ID' value='".$row["id_elemento"]."' disabled/></td>
 					</tr>
@@ -153,14 +154,8 @@
 						<input type='submit' class='btn btn-danger' value= 'Generar Código de Barras: Elemento ".$row["serial"]."'/>
 						</form>
 					</td></tr>";
-					}		
-			}else{
-					echo 
-					 "<script language='JavaScript'> 
-					 alert('Debe Ingresar Datos de Búsqueda'); 
-					 window.location='registrarElementos.php';
-					 </script>"; 
-					}
+					}	
+			}			
 			
 		}
 

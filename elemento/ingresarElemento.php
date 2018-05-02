@@ -40,34 +40,34 @@
 			$link=Conectar();  
 			$cc_usu=$_POST['UsuarioCC'];
 			$Sql="select id_usuario from usuario where cedula = ".$cc_usu." ";
-			$result=query($Sql,$link);
+			$result=$link->query($Sql);
 			$id_elemento=$_POST['ID'];
-			$x=mysql_num_rows($result);
+			$x=$result->num_rows;
 			
 			date_default_timezone_set("America/Bogota" ) ; 		
 			$diaactual=date("Y-m-d");
 			$hora = date('H:i:s',time());
 			$fecha=($diaactual." ".$hora);																							
 			$Sql1="select max(id_ingreso) from ingreso";
-			$reultmax_id_ingreso=query($Sql1,$link); 
-			$datos_max_id_ingreso=mysql_fetch_array($reultmax_id_ingreso);
-			$max_id_ingreso=($datos_max_id_ingreso[0])+1;                                
-			$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_elemento ie inner join elemento ele on ie.id_elemento = ele.id_elemento where ele.id_elemento = ".$id_elemento."  and ie.id_ingreso = ing.id_ingreso and ing.fecha_salida = '0000-00-00 00:00:00'";
-			$result=query($sql,$link);
-			$ingreso = mysql_fetch_array($result); 
-			$y=mysql_num_rows($result);
+			$reultmax_id_ingreso=$link->query($Sql1); 
+			$datos_max_id_ingreso=$reultmax_id_ingreso->fetch_all(MYSQLI_ASSOC);			
+			$max_id_ingreso=($datos_max_id_ingreso[0]['max(id_ingreso)'])+1;                                
+			$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_elemento ie inner join elemento ele on ie.id_elemento = ele.id_elemento where ele.id_elemento = ".$id_elemento."  and ie.id_ingreso = ing.id_ingreso and ing.fecha_salida IS NULL";
+			$result=$link->query($sql);
+			$ingreso = $result->fetch_all(MYSQLI_ASSOC);
+			$y=$result->num_rows;
 			if($y==0){
-				$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."','----')";
-				$result=query($sql,$link);
+				$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."', NULL)";
+				$result=$link->query($sql);
 				$sql = "insert into ingreso_elemento values (".$max_id_ingreso.", ".$id_elemento.")";
-				$result=query($sql,$link);
+				$result=$link->query($sql);
 				echo "
 					<script language='JavaScript'>
 					alert('Entro');
 					</script>"; 
 			}else{
-				$sql = "update ingreso set fecha_salida='".$fecha."' where id_ingreso = ".$ingreso[0]."";
-				$result=query($sql,$link);
+				$sql = "update ingreso set fecha_salida='".$fecha."' where id_ingreso = ".$ingreso[0]['id_ingreso']."";
+				$result=$link->query($sql);
 				echo "
 					<script language='JavaScript'>
 					alert('Salió');

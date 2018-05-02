@@ -20,7 +20,7 @@ include("web-app/sidebar.php");
 <div class="hero-unit">
     <h1>ACONSY</h1>
     <p>"Acces Control System" - ACONSY, en un sistema web para el control y gestión de ingresos de personal en instituciones que necesiten llevar un control de usuarios y elementos que son ingresados en sus instalaciones. </p>
-    <p><a class="btn btn-danger btn-large" href='sesion/iniciarSesion.php' >Iniciar Sesi&oacute;n &raquo;</a></p>
+    <p><a class="btn btn-danger btn-large" href='/ACONSY/sesion/iniciarSesion.php' >Iniciar Sesi&oacute;n &raquo;</a></p>
 </div>
 
 <div class="downPage">

@@ -156,7 +156,6 @@ $pdf=new PDF('P','mm','Letter');
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetFillColor(85,107,140);
     $pdf->SetTextColor(255);
-
 		for($i=0;$i<1;$i++)
 			{
 				$pdf->Row(array('Entrada', 'Salida', 'Cedula', 'Nombre','Apellidos'));

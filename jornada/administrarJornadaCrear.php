@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	if (isset($_SESSION['rol'])){
 		if($_SESSION['rol']==1)
 			echo "<h1></h1>";
@@ -34,7 +34,7 @@
     <h1>Administrar Jornadas</h1>
     <p>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();   
         ?>
        
@@ -175,7 +175,7 @@
  
  
 	 <?php 
-         include("\..\web-app/footer.php");
+         include("../web-app/footer.php");
      ?>
      
 </body>

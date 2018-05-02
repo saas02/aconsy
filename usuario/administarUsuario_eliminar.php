@@ -11,8 +11,8 @@
 
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -60,7 +60,7 @@
     </p>
 	
     <?php
-		include("\..\web-app\conexion.php");
+		include("../web-app/conexion.php");
 		$link=Conectar(); 
 				
 				
@@ -95,7 +95,7 @@
 	?>
 	   
 		 <?php 
-            include("\..\web-app/footer.php");
+            include("../web-app/footer.php");
          ?>
      
 

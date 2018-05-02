@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -38,7 +38,7 @@
     <p>
 		<?php
 		error_reporting(0);
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar(); 
 			
 			$Sql1="select lugar_garaje from garaje";
@@ -185,7 +185,7 @@
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

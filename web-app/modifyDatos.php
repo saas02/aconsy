@@ -8,8 +8,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -26,7 +26,7 @@
 	$celular=$_POST['celular'];
 	$extension=$_POST['extension'];
 	$direccion=$_POST['direccion'];
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 	$link=Conectar();
 	
 	echo "<script language='JavaScript'> 
@@ -41,7 +41,7 @@
 </form>
 </p>
 	<?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
 	?>
 </body>
 </html>

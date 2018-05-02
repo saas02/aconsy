@@ -10,8 +10,8 @@
 
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	
 	$curs=$_SESSION['cod'];
 	$user=$_POST['miSelect'];
@@ -35,7 +35,7 @@
 <select name="usuario" style="width:300px; text-align:center"> 
 <?php
 
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar();         
 $result = query("SELECT usuario.cedula,usuario_curso.id_usuario, usuario.nombres, usuario.primer_apellido FROM usuario_curso, usuario where usuario_curso.id_usuario=usuario.id_usuario and usuario_curso.id_curso=".$user."", $link);
 if ($row = mysql_fetch_array($result)){
@@ -63,7 +63,7 @@ echo "¡ La base de datos está vacia !";
    	</p>
 </td></tr></div></table>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

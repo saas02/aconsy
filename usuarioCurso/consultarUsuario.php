@@ -7,8 +7,8 @@
 </head>
 <body>
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     <h1>Busqueda</h1>
 <table align="center" border="0">
@@ -24,7 +24,7 @@
 <td><select name="miSelect" style="width:215px" align="center">
 <?php
 
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 
 $link=Conectar();   
 $result = query("SELECT * FROM curso", $link);
@@ -62,7 +62,7 @@ echo "¡ La base de datos está vacia !";
 </table>
  </td></tr></div></table>  	
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 </body>
 </html>

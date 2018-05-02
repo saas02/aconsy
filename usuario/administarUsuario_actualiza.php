@@ -10,8 +10,8 @@
 <div class="container">
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -35,7 +35,7 @@
 		
 		
 	
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 	$link=Conectar();
 	$result = query("UPDATE usuario set cedula=".$Cedula.",cargo='".$Cargo."', nombres='".$Nombres."',primer_apellido='".$Primer_Apellido."',segundo_apellido='".$Segundo_Apellido."',telefono='".$Telefono."',celular='".$Celular."',extension='".$Extension."',direccion='".$Direccion."',area='".$Area."',estado='".$Estado."' where cedula=".$Cedula."", $link);
 
@@ -66,7 +66,7 @@ echo  "Se Ha Modificado El Usuario: " .$Cedula;
    	</p>
 	</div>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

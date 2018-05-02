@@ -20,8 +20,8 @@ function validar(e) { // 1
 
 <form name="formul" action="modify.php" method="post">
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -32,7 +32,7 @@ function validar(e) { // 1
      	$id=$_POST['codigo'];
 	$name=$_POST['nombre'];
 
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 	$link=Conectar();
 	if ($id=="" || $name=="")
 	{
@@ -86,7 +86,7 @@ echo  "Se Ha Modificado El Curso: " .$id;
    	</p>
 	</div>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

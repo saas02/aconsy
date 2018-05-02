@@ -11,8 +11,8 @@
 
 
         <?php
-        include("\..\web-app\header.php");
-        include("\..\web-app\sidebar.php");
+        include("../web-app/header.php");
+        include("../web-app/sidebar.php");
         ?>
 
 
@@ -36,7 +36,7 @@
 $Cedula = $_POST["Cedula"];
 
 
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link = Conectar();
 
 $consulta = $link->query("SELECT estado FROM usuario WHERE cedula ='" . $_POST["Cedula"] . "'");
@@ -133,7 +133,7 @@ if ($arregloconsulta[0]['estado'] == 0) {
 
 
 <?php
-include("\..\web-app/footer.php");
+include("../web-app/footer.php");
 ?>
 
 

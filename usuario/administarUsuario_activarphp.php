@@ -10,8 +10,8 @@
 <body>
 
 	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
      <?php 
@@ -34,7 +34,7 @@
                           
                           }
 						  
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar(); 
 $cedula=$_POST['Cedula'];
 $estado="1";	
@@ -54,7 +54,7 @@ echo "<script language='JavaScript'>
       ?>
 
 	 <?php 
-	    include("\..\web-app/footer.php");
+	    include("../web-app/footer.php");
      ?>
      
 

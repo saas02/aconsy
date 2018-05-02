@@ -27,8 +27,8 @@ function letra(e) { // 1
 
 
 <?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 ?>
 
    
@@ -53,7 +53,7 @@ function letra(e) { // 1
 	<td>
 	<select name="miSelect" style="width:450px" align="center">
 	<?php
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 	$link=Conectar();   
 	$result = $link->query("SELECT * FROM curso");
         $arregloconsulta = $result->fetch_all(MYSQLI_ASSOC);
@@ -99,7 +99,7 @@ function letra(e) { // 1
 	
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
    
  

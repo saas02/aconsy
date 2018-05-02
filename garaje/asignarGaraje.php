@@ -1,6 +1,6 @@
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -27,7 +27,7 @@
        ?></h1>
     <p>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar(); 
 		
         ?>   
@@ -68,6 +68,6 @@
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 

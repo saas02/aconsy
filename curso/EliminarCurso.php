@@ -29,8 +29,8 @@ window.location='administarCurso.php';
 	}
 </script>
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -67,7 +67,7 @@ echo "<input readonly type='text' name='curse'  style='text-align: center'  opti
    	</p>
 </td></tr></div></table>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

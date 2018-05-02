@@ -10,8 +10,8 @@
 
 <body onLoad="MM_preloadImages('images/Bt_InicioNueva.jpg','images/Bt_QuienesSomosNueva.jpg','images/Bt_FacsNueva.jpg','images/Bt_ContactenosNueva.jpg')">
 <?php 
-include("\..\web-app\header.php");
-include("\..\web-app\sidebar.php"); 
+include("../web-app/header.php");
+include("../web-app/sidebar.php"); 
 ?>
 <table border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
     <tr>
@@ -60,7 +60,7 @@ include("\..\web-app\sidebar.php");
                         
 </table>
 <?php 
-include("\..\web-app/footer.php");
+include("../web-app/footer.php");
 ?>
 </body>
 </html>

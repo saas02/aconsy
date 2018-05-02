@@ -35,11 +35,11 @@ n.focus();
 
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     <?php
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 		@$link=Conectar(); 
 	?>
     
@@ -170,7 +170,7 @@ n.focus();
     
 	
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 

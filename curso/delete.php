@@ -10,8 +10,8 @@
 <body>
 <form name="formul" action="delete.php" method="post">
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -19,7 +19,7 @@
     <p>
 <?php 
 $id=$_POST['curse'];
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar();
 echo "<script language='JavaScript'> 
                 alert('Se Elimino La Ficha: ".$id."'); 
@@ -49,7 +49,7 @@ echo  "Se Ha Eliminado El Curso: " .$id;
    	</p>
 	</div>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

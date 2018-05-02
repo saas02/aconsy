@@ -96,7 +96,7 @@
  </td></tr></div></table>
 </p>
 	<?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
 	?>
 </body>
 </html>

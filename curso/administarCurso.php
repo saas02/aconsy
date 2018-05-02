@@ -54,8 +54,8 @@ var conf = confirm("¿Está seguro de Eliminar?")
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -95,7 +95,7 @@ var conf = confirm("¿Está seguro de Eliminar?")
 
 <?php
 
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar();   
 $result = $link-> query("SELECT * FROM curso");
 $arregloconsulta = $result->fetch_all(MYSQLI_ASSOC);
@@ -123,7 +123,7 @@ foreach ($arregloconsulta as $key => $arreglo){
 	
 	</td></tr></div></table>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

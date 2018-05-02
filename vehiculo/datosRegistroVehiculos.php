@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -39,7 +39,7 @@
 	</h1>
     <p>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();
 			$Sql1="select max(id_vehiculo) from vehiculo";
 			$reultmax_id_vehiculo=query($Sql1,$link); 
@@ -135,7 +135,7 @@
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

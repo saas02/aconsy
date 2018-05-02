@@ -26,8 +26,8 @@ function letra(e) { // 1
 </script>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -54,7 +54,7 @@ function letra(e) { // 1
        ?></h1>
     <p>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();  
 			$Sql1="select max(id_garaje) from garaje where lugar_garaje!='motos'";
 			$reultmax_id_garaje=query($Sql1,$link); 
@@ -116,7 +116,7 @@ function letra(e) { // 1
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

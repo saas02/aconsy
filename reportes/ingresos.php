@@ -17,8 +17,8 @@
 
 
      <?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	@$user=$_POST['user'];
 	?>
     

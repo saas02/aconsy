@@ -8,8 +8,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -18,7 +18,7 @@
 <form name="formul" action="modifyDatos.php" method="post">
 	<?php 
 	$cedula=$_POST['cedula'];
-    include("\..\web-app\conexion.php");
+    include("../web-app/conexion.php");
 	$link=Conectar();	
 	echo "<script language='JavaScript'> 
         alert('La Contrasena Del Usuario ".$cedula." Se Ha Cambiado'); 
@@ -30,7 +30,7 @@
 
 </p>
 	<?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
 	?>
 </body>
 </html>

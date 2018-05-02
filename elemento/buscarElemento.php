@@ -8,8 +8,8 @@
 <body>
 
 	<?php 
-    include("\..\web-app\header.php");
-    include("\..\web-app\sidebar.php"); 
+    include("../web-app/header.php");
+    include("../web-app/sidebar.php"); 
 	?>
     <div class="content">
     
@@ -39,7 +39,7 @@
     
         
     <?php 
-	include("\..\web-app\conexion.php");
+	include("../web-app/conexion.php");
 	$link=Conectar();
 	echo "<table align='center' border='0'>";
 	if(isset($_POST["ced"]) && $_POST["ced"]!=""){
@@ -173,7 +173,7 @@
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

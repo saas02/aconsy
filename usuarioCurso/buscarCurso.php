@@ -9,8 +9,8 @@
 
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	
 	@$curs=$_SESSION['cod'];
 	
@@ -47,7 +47,7 @@ $user=$_POST['user'];
 		}
 	
 
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar();   
 $Sql=query("Select id_usuario from usuario where cedula=".$user."",$link);
 $array=mysql_fetch_array($Sql);
@@ -81,7 +81,7 @@ echo "</h2>";
 </fieldset>
 </td></tr></div></table>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

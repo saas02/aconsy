@@ -27,8 +27,8 @@ function letra(e) { // 1
 <body>
 
 	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
      <?php 
@@ -85,7 +85,7 @@ function letra(e) { // 1
 </td></tr></div></table>	
  
 	 <?php 
-	    include("\..\web-app/footer.php");
+	    include("../web-app/footer.php");
      ?>
      
 

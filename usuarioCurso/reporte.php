@@ -21,7 +21,7 @@ header("content-disposition: attachment;filename=Reporte.xls");
 <img src="http://img.directindustry.es/images_di/photo-m2/sensores-biometricos-lectores-de-huellas-dactilares-38586-2659895.jpg">
 <br><h1>Estudiantes Por Curso</h1>
 <?php
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link=Conectar();         
 $query="SELECT usuario_curso.id_usuario, usuario.nombres, usuario.primer_apellido FROM usuario_curso, usuario where usuario_curso.id_usuario=usuario.id_usuario";
 $result_query=query($query,$link);

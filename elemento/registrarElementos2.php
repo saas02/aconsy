@@ -82,7 +82,7 @@ $resul=query("INSERT INTO elemento (id_elemento, marca, serial, descripcion, tip
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </div>

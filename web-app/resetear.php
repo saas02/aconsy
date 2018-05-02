@@ -8,8 +8,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -39,7 +39,7 @@
  </td></tr></div></table>
 </p>
 	<?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
 	?>
 </body>
 </html>

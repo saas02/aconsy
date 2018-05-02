@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -40,7 +40,7 @@
 		alert ('Garaje ingresado con exito');
 	</script>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();  
 			$id_garaje=$_POST['id_garaje'];
 			$lugar_garaje=$_POST['lugar_garaje'];
@@ -99,7 +99,7 @@
 	</div>
  
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

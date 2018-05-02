@@ -9,8 +9,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
 
   	<div class="content">
@@ -56,7 +56,7 @@ function letra(e) { // 1
     <p>
 		<?php 
 		error_reporting(0);
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();   
 			$cc_usu=$_POST["cc_usuario"];
 			$Sql="select cedula from usuario where cedula = ".$cc_usu." ";
@@ -270,7 +270,7 @@ $Sql="select v.id_vehiculo, placa, marca, color, tipo from vehiculo as v inner j
    	</p>
 	</div>
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 </body>

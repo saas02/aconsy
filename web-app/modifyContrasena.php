@@ -8,8 +8,8 @@
 <body>
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -20,7 +20,7 @@
 	
 	@session_start();
         $cedula=$_SESSION['cedula'];
-        include("\..\web-app\conexion.php");
+        include("../web-app/conexion.php");
 	$link=Conectar();	
 	$datos = query("SELECT contrasena FROM usuario where cedula=".$cedula."", $link);
 	$datosUsuario=mysql_fetch_array($datos);
@@ -72,7 +72,7 @@
 </form>
 </p>
 	<?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
 	?>
 </body>
 </html>

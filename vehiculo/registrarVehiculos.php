@@ -9,8 +9,8 @@
 <body onload = "document.asigGaraje.cc_usuario.focus() ">
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
 
   	
@@ -56,7 +56,7 @@ function letra(e) { // 1
     </h1>
     <p>
 		<?php
-			include("\..\web-app\conexion.php");
+			include("../web-app/conexion.php");
 			$link=Conectar();   
 				?>
 
@@ -85,7 +85,7 @@ function letra(e) { // 1
    	</p>
 	
 	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
      
 

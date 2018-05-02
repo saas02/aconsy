@@ -11,8 +11,8 @@
 <div class="container">
 
   	<?php 
-	include("\..\web-app\header.php");
-	include("\..\web-app\sidebar.php"); 
+	include("../web-app/header.php");
+	include("../web-app/sidebar.php"); 
 	?>
     
     
@@ -36,7 +36,7 @@
 	}
 	else
 	{
-		include("\..\web-app\conexion.php");
+		include("../web-app/conexion.php");
 	$link=Conectar();
         
 	$sql= $link->query ("select max(id_curso) from curso ");
@@ -71,7 +71,7 @@
    	</p>
 	</div>
  	 <?php 
-        include("\..\web-app/footer.php");
+        include("../web-app/footer.php");
      ?>
 
 </div>

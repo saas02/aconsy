@@ -1,7 +1,11 @@
 <?php
 require_once('../web-app/pdf/fpdf.php');
-$link=mysql_connect("localhost","root","");
-mysql_select_db("aconsy", $link); 
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'aconsy');
+define('DB_CHARSET', 'utf-8');
+$link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 class PDF extends FPDF
 {
 var $widths;
@@ -120,7 +124,7 @@ function Footer()
 $this->SetY(-15);
 $this->SetFont ( 'Arial','I',10) ;
 $this->AliasNbPages();
-$this->Cell(0, 10, 'Unese Forem - 2012 		Página ' . $this->PageNo() . '/
+$this->Cell(0, 10, 'Unese Forem - 2012 		Pï¿½gina ' . $this->PageNo() . '/
 {nb}' ,0,0 , 'C') ;
 }
 
@@ -132,8 +136,8 @@ $inicio=$_POST['in'];
 $fin=$_POST['fin'];
 $user=$usuario;
 $consulta = "SELECT * from usuario where cedula= '$usuario'";
-$usuario = query($consulta);
-$arreglo_usuario = mysql_fetch_array($usuario);
+$usuario = $link->query($consulta);
+$arreglo_usuario = $usuario->fetch_all(MYSQLI_ASSOC)[0];
 $pdf=new PDF('P','mm','Letter');
 	$pdf->Open();
 	$pdf->AddPage();
@@ -163,11 +167,11 @@ WHERE ingreso.id_ingreso = ingreso_usuario.id_ingreso
 AND usuario.id_usuario = ingreso_usuario.id_usuario
 AND usuario.cedula= '$user'
 AND DATE_FORMAT(ingreso.fecha_entrada,'%Y-%m-%d %H:%i:%s') BETWEEN '$inicio' AND '$fin'";
-$reporte = query($newConsulta);
-$numfilas = mysql_num_rows($reporte);
+$reporte = $link->query($newConsulta);
+$numfilas = $reporte->num_rows;
 for ($i=0; $i<$numfilas; $i++)
 		{
-			$filas = mysql_fetch_array($reporte);
+			$filas = $reporte->fetch_all(MYSQLI_ASSOC);
 			$pdf->SetFont('Arial','',10);
 			
 			if($i%2 == 1)

@@ -48,7 +48,7 @@
 			$Sql="select id_usuario from usuario where cedula = ".$cc_usu." ";
 			$result=$link->query($Sql);
 			$id_usu = $result->fetch_all(MYSQLI_ASSOC);
-			$x=count($result);
+			$x=$result->num_rows;
                         
 			if ($x==0){
                             if ($variable==0){
@@ -78,7 +78,7 @@
 				$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_usuario iu inner join usuario uu on iu.id_usuario = uu.id_usuario where uu.cedula = ".$cc_usu."  and iu.id_ingreso = ing.id_ingreso and ing.fecha_salida = 'NULL'";
 				$result=$link->query($sql);
 				$ingreso = $result->fetch_all(MYSQLI_ASSOC);                                 
-				$y=count($ingreso);                                                                   
+				$y=$result->num_rows;                                                                   
 				if($y==0){
 					$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."', null)";
 					$result=$link->query($sql);                                         

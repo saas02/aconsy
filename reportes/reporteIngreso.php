@@ -21,7 +21,7 @@
 	@$fin=$_POST['fin'];//fecha fin calendario
 	session_start();
 	$cedula=$_SESSION['cedula'];
-	?>
+    ?>
 	
     
     
@@ -33,21 +33,24 @@
 include("../web-app/conexion.php");
 $link=Conectar();   
 $userReport="select nombres,primer_apellido,segundo_apellido,cedula,cargo,area,telefono from usuario where cedula=".$usuario."";
-$resultuserReport=query($userReport,$link);
-$datoUserReport=mysql_fetch_array($resultuserReport);
+$resultuserReport=$link->query($userReport);
+$datoUserReport=$resultuserReport->fetch_all(MYSQLI_ASSOC);  
+
 $user="Select nombres, primer_apellido, segundo_apellido, cedula from usuario where cedula=".$cedula."";
-$resultuser=query($user,$link);
-$datos=mysql_fetch_array($resultuser);
-$dato=$datos[0]." ".$datos[1]." ".$datos[2]." C.C ".$datos[3];
+$resultuser=$link->query($user);
+@$datos=$resultuser->fetch_all(MYSQLI_ASSOC);  
+$dato=$datos[0]['nombres']." ".$datos[0]['primer_apellido']." ".$datos[0]['segundo_apellido']." C.C ".$datos[0]['cedula'];
+
+
 $query="SELECT ingreso.fecha_entrada, ingreso.fecha_salida, usuario.cedula, usuario.nombres, usuario.primer_apellido, usuario.segundo_apellido
 FROM ingreso, ingreso_usuario, usuario
 WHERE ingreso.id_ingreso = ingreso_usuario.id_ingreso
 AND usuario.id_usuario = ingreso_usuario.id_usuario
 AND usuario.cedula=".$usuario."
 AND DATE_FORMAT(ingreso.fecha_entrada,'%Y-%m-%d %H:%i:%s') BETWEEN '".$inicio."' AND '".$fin."'";
-$result_query=query($query,$link);
-$reg=mysql_num_rows($result_query);
-$ediciones = mysql_fetch_array($result_query);
+$result_query=$link->query($query);
+$reg=$result_query->num_rows;
+$ediciones = $result_query->fetch_all(MYSQLI_ASSOC);
 $x=1;
         ?>
 
@@ -57,11 +60,11 @@ $x=1;
 <input type="hidden" name="fin" VALUE="<?php echo $fin ?>">
 <?php
 echo "<tr>";
-echo "<b>Usuario: </b>".$datoUserReport[0]." ".$datoUserReport[1]." ".$datoUserReport[2]."<br>";
-echo "<b>Cedula: </b>".$datoUserReport[3]."<br>";
-echo "<b>Cargo: </b>".$datoUserReport[4]."<br>";
-echo "<b>Area: </b>".$datoUserReport[5]."<br>";
-echo "<b>Telefono: </b>".$datoUserReport[6]."<br>";
+echo "<b>Usuario: </b>".$datoUserReport[0]['nombres']." ".$datoUserReport[0]['primer_apellido']." ".$datoUserReport[0]['segundo_apellido']."<br>";
+echo "<b>Cedula: </b>".$datoUserReport[0]['cedula']."<br>";
+echo "<b>Cargo: </b>".$datoUserReport[0]['cargo']."<br>";
+echo "<b>Area: </b>".$datoUserReport[0]['area']."<br>";
+echo "<b>Telefono: </b>".$datoUserReport[0]['telefono']."<br>";
 echo "<br>";
 ?>
 <table width="700" border="1" cellpadding="1" cellspacing="1" bgcolor="#FFB862" align="center">
@@ -75,22 +78,19 @@ echo "<br>";
     </tr>
 	
         <?php
+        
+         foreach($ediciones as $edicion){
+            echo "<tr>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center' >"; echo $edicion['fecha_entrada']; echo "</td>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $edicion['fecha_salida']; echo "</td>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $edicion['cedula']; echo "</td>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $edicion['nombres']; echo "</td>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center' >"; echo $edicion['primer_apellido']; echo "</td>";
+            echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $edicion['segundo_apellido']; echo "</td>";
+            echo "</tr>";
+        } 
 				
-if ($x<$ediciones){
-do 	{
-echo "<tr>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center' >"; echo $ediciones['fecha_entrada']; echo "</td>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $ediciones['fecha_salida']; echo "</td>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $ediciones['cedula']; echo "</td>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $ediciones['nombres']; echo "</td>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center' >"; echo $ediciones['primer_apellido']; echo "</td>";
-echo "<td bgcolor='#FFFFFF' class='Estilo3' align='center'>"; echo $ediciones['segundo_apellido']; echo "</td>";
-echo "</tr>";
-	} while ($ediciones=mysql_fetch_array($result_query));
-	} else {
-		echo "¡ La base de datos esta vacia !";
-}
-		?>
+    ?>
 		
 <tr>
 	<td align="center" colspan="6">
@@ -102,8 +102,8 @@ echo "</tr>";
 </table>
 </form>
 	<h6 align="right">Impreso Por: <?php echo $dato?></h6>
-		
-		
+	
+     
    	</p>
 
 	

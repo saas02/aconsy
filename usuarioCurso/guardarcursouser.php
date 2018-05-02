@@ -17,18 +17,17 @@
 <?php
 @$curso=$_POST['miSelect'];
 @$user=$_POST['usuario'];
-
 @$curse=$_SESSION['codigo'];
 	include("\..\web-app\conexion.php");
 	$link=Conectar();
-	@$sql=query ("select * from usuario where cedula=".$user." ",$link);
-	@$row=mysql_num_rows($sql);
+	@$sql=$link->query("select * from usuario where cedula=".$user." ");
+	@$row=count($sql);
 	
-	@$Sql=query("select id_usuario from usuario where cedula=".$user."",$link);
-	@$array=mysql_fetch_array($Sql);
-	@$id_user=$array[0];
-	@$sql1=query ("select id_usuario, id_curso from usuario_curso where id_usuario=".$id_user." ",$link);
-	@$row1=mysql_num_rows($sql1);
+	@$Sql=$link->query("select id_usuario from usuario where cedula=".$user."");
+	@$array=$Sql->fetch_all(MYSQLI_ASSOC);        
+	@$id_user=$array[0]['id_usuario'];
+	@$sql1=$link->query("select id_usuario, id_curso from usuario_curso where id_usuario=".$id_user." ");
+	@$row1=$sql1->num_rows;
 	
 	
 	if ($row1>0)
@@ -53,7 +52,7 @@
 						alert('El Usuario ".$user." Se Ha Registrado Al Curso ".$curse."'); 
 						window.location='userCurse.php';
 						</script>"; 					
-					$result = query("INSERT INTO usuario_curso (id_usuario, id_curso) VALUES (".$id_user.",'".$curso."')", $link);
+					$result = $link->query("INSERT INTO usuario_curso (id_usuario, id_curso) VALUES (".$id_user.",'".$curso."')");
 					}
 			}
 	

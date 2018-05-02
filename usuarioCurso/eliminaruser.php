@@ -20,18 +20,18 @@ include("\..\web-app\conexion.php");
 $link=Conectar();
 $curso=$_POST['miSelect'];
 $user=$_POST['usuario'];
-@$Sql=query("Select id_usuario from usuario where cedula=".$user."",$link);
-@$array=mysql_fetch_array($Sql);
-@$id_user=$array[0];
-$sql1=query ("select * from usuario_curso where id_curso=".$curso." AND id_usuario=".$id_user."",$link);
-@$row=mysql_num_rows($sql1);
+@$Sql=$link->query("Select id_usuario from usuario where cedula=".$user."");
+@$array=$Sql->fetch_all(MYSQLI_ASSOC);  
+@$id_user=$array[0]['id_usuario'];
+$sql1=$link->query ("select * from usuario_curso where id_curso=".$curso." AND id_usuario=".$id_user."");
+@$row=$sql1->num_rows;;
 if ($row>0)
 	{
 	echo 		 "<script language='JavaScript'> 
 			alert('El Usuario ".$user." Se Ha Eliminado del curso'); 
 			window.location='userCurse.php';
 			</script>"; 
-	$delete= query ("DELETE from usuario_curso where id_curso=".$curso." AND id_usuario=".$id_user."",$link);
+	$delete= $link->query ("DELETE from usuario_curso where id_curso=".$curso." AND id_usuario=".$id_user."");
 	}
 	else
 	{

@@ -8,8 +8,8 @@
 
     <body>
         <?php
-        include("\..\web-app\header.php");
-        include("\..\web-app\sidebar.php");
+        include("../web-app/header.php");
+        include("../web-app/sidebar.php"); 
         ?>
 
         <?php
@@ -62,7 +62,7 @@
             </table>
 
 <?php
-include("\..\web-app\conexion.php");
+include("../web-app/conexion.php");
 $link = Conectar();
 ?>
 
@@ -71,7 +71,7 @@ $link = Conectar();
 
 
 <?php
-include("\..\web-app/footer.php");
+include("../web-app/footer.php");
 ?>
     </body>
 </html>

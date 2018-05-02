@@ -54,20 +54,20 @@
 	<?php
 	$Cedula=$_POST["Cedula"];	
 	@$consulta1=("SELECT cedula,cargo,nombres,primer_apellido,segundo_apellido,area FROM usuario where cedula=".$Cedula."");
-		$resul=query($consulta1);	
-		@$registro=mysql_fetch_array($resul);
-		$ced=$registro[0];
-		$cargo=$registro[1];
-		$nombres=$registro[2];
-		$primer=$registro[3];
-		$segundo=$registro[4];
-		$area=$registro[5];
-	@$consulta= query("SELECT estado FROM usuario WHERE cedula ='".$_POST["Cedula"]."'");
-	@$estado= mysql_fetch_array($consulta);
+		$resul=$link->query($consulta1);	
+		@$registro=$resul->fetch_all(MYSQLI_ASSOC);
+		$ced=$registro[0]['cedula'];
+		$cargo=$registro[0]['cargo'];
+		$nombres=$registro[0]['nombres'];
+		$primer=$registro[0]['primer_apellido'];
+		$segundo=$registro[0]['segundo_apellido'];
+		$area=$registro[0]['area'];
+	@$consulta= $link->query("SELECT estado FROM usuario WHERE cedula ='".$_POST["Cedula"]."'");
+	@$estado= $consulta->fetch_all(MYSQLI_ASSOC);;
 	
 	
-	$sql=query("select * from usuario WHERE cedula =".$Cedula."");
-	@$creado=mysql_num_rows($sql);
+	$sql=$link->query("select * from usuario WHERE cedula =".$Cedula."");
+	@$creado=$sql->num_rows;
 
 if ($Cedula==Null)
 {
@@ -95,7 +95,7 @@ else
                     </script>";	
 	break;
 	case 1:
-	if ($estado[0]==0)
+	if ($estado[0]['estado']==0)
 		{
 	echo "<script language='JavaScript'> 
 		alert('El usuario Esta Inactivo');

@@ -40,7 +40,7 @@ $cedula=$_POST['Cedula'];
 $estado="1";	
 if ($estado=="1")
 {
-$consulta=query("UPDATE  usuario SET  estado=".$estado."   WHERE  cedula=".$cedula."", $link);
+$consulta=$link->query("UPDATE  usuario SET  estado=".$estado."   WHERE  cedula=".$cedula."");
 echo "<script language='JavaScript'> 
    alert('Se Ha Modificado El Estado Del Usuario: ".$cedula."');
    window.location='buscar.php';

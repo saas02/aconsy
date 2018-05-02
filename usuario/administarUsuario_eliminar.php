@@ -64,13 +64,13 @@
 		$link=Conectar(); 
 				
 				
-				@$ejecutaconsulta=query("select estado from usuario where cedula = '".$_POST["Cedula"]."'");
-				$res_consulta=mysql_fetch_array($ejecutaconsulta);
+				@$ejecutaconsulta=$link->query("select estado from usuario where cedula = '".$_POST["Cedula"]."'");
+				$res_consulta=$ejecutaconsulta->fetch_all(MYSQLI_ASSOC);
 				
-				if ($res_consulta[0]==1)
+				if ($res_consulta[0]['estado']==1)
 				{
 					
-					$cambio_estado=query("UPDATE usuario set estado='0' where cedula='".$_POST["Cedula"]."'");
+					$cambio_estado=$link->query("UPDATE usuario set estado='0' where cedula='".$_POST["Cedula"]."'");
 					echo 
 								  "<script language='JavaScript'> 
 								  alert('Usuario Desactivado con exito '); 
@@ -79,7 +79,7 @@
 				
 				}
 				
-				else if ($res_consulta[0]==0) 
+				else if ($res_consulta[0]['estado']==0) 
 				{
 					echo 
 								  "<script language='JavaScript'> 

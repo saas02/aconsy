@@ -37,7 +37,7 @@
 	
 	include("../web-app/conexion.php");
 	$link=Conectar();
-	$result = query("UPDATE usuario set cedula=".$Cedula.",cargo='".$Cargo."', nombres='".$Nombres."',primer_apellido='".$Primer_Apellido."',segundo_apellido='".$Segundo_Apellido."',telefono='".$Telefono."',celular='".$Celular."',extension='".$Extension."',direccion='".$Direccion."',area='".$Area."',estado='".$Estado."' where cedula=".$Cedula."", $link);
+	$result = $link->query("UPDATE usuario set cedula=".$Cedula.",cargo='".$Cargo."', nombres='".$Nombres."',primer_apellido='".$Primer_Apellido."',segundo_apellido='".$Segundo_Apellido."',telefono='".$Telefono."',celular='".$Celular."',extension='".$Extension."',direccion='".$Direccion."',area='".$Area."',estado='".$Estado."' where cedula=".$Cedula."");
 
 ?>
 

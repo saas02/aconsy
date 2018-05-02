@@ -49,22 +49,22 @@
 			$result=$link->query($Sql);
 			$id_usu = $result->fetch_all(MYSQLI_ASSOC);
 			$x=$result->num_rows;
-                        
+            
 			if ($x==0){
-                            if ($variable==0){
-				echo "
-				<script language='JavaScript'>
-				alert('Usuario no registrado Vuelva intente');
-				window.location='ingresoUsuarios.php';
-				</script>";  
-                            }else{
-				echo "
-				<script language='JavaScript'>
-				alert('Usuario no registrado Vuelva intente');
-				window.location='ingresoAutomatico.php';
-				</script>"; 
+                if ($variable==0){
+					echo "
+					<script language='JavaScript'>
+					alert('Usuario no registrado Vuelva intente');
+					window.location='ingresoUsuarios.php';
+					</script>";  
+                }else{
+					echo "
+					<script language='JavaScript'>
+					alert('Usuario no registrado Vuelva intente');
+					window.location='ingresoAutomatico.php';
+					</script>"; 
 				
-                            }
+                }
 			}else{ 
 				date_default_timezone_set("America/Bogota" ) ; 		
 				$diaactual=date("Y-m-d");
@@ -75,10 +75,11 @@
 				$datos_max_id_ingreso=$reultmax_id_ingreso->fetch_all(MYSQLI_ASSOC);                                
 				$max_id_ingreso=($datos_max_id_ingreso[0]['max(id_ingreso)'])+1;
 				                                    
-				$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_usuario iu inner join usuario uu on iu.id_usuario = uu.id_usuario where uu.cedula = ".$cc_usu."  and iu.id_ingreso = ing.id_ingreso and ing.fecha_salida = 'NULL'";
+				$sql = "select ing.id_ingreso from ingreso ing inner join ingreso_usuario iu inner join usuario uu on iu.id_usuario = uu.id_usuario where uu.cedula = ".$cc_usu."  and iu.id_ingreso = ing.id_ingreso and ing.fecha_salida is NULL";				
 				$result=$link->query($sql);
-				$ingreso = $result->fetch_all(MYSQLI_ASSOC);                                 
-				$y=$result->num_rows;                                                                   
+				$ingreso = $result->fetch_all(MYSQLI_ASSOC);  				                             
+				$y=$result->num_rows;                         
+
 				if($y==0){
 					$sql = "insert into ingreso values (".$max_id_ingreso.",'".$fecha."', null)";
 					$result=$link->query($sql);                                         
@@ -89,8 +90,8 @@
 						<script language='JavaScript'>
 						alert('Entro');
 						</script>"; }
-					}else{                                                
-						$sql = "update ingreso set fecha_salida='".$fecha."' where id_ingreso = ".$ingreso[0]."";
+					}else{ 						
+						$sql = "update ingreso set fecha_salida='".$fecha."' where id_ingreso = ".$ingreso[0]['id_ingreso']."";
 						$result=$link->query($sql);
                                                 
 						if ($variable==0){
@@ -99,11 +100,11 @@
                                                     alert('Salio');
                                                     </script>";
 						$rol = $link->query("SELECT rol.id_rol FROM rol,usuario_rol,usuario WHERE rol.id_rol=usuario_rol.id_rol AND usuario_rol.id_usuario=usuario.id_usuario and usuario.cedula=".$cc_usu."");
-                                                $usuario_rol=$rol->fetch_all(MYSQLI_ASSOC);
-                                                $idRol=$usuario_rol[0]; 
+                                                $usuario_rol=$rol->fetch_all(MYSQLI_ASSOC)[0];
+                                                $idRol=$usuario_rol['id_rol']; 
                                                     if ($idRol=="6"){
                                                         $state="0";
-                                                        $estado = query("UPDATE usuario set estado='".$state."' where cedula=".$cc_usu."", $link);
+                                                        $estado=$link->query("UPDATE usuario set estado='".$state."' where cedula=".$cc_usu."");
                                                     }else {
                                                             
                                                     }

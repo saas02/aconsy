@@ -812,6 +812,7 @@
   .row-fluid .span10{
     width: 120%!important;
   }  
+
   .thumbnails {
     margin-left: 0;
   }
@@ -1047,3 +1048,27 @@
     overflow: visible !important;
   }
 }
+
+@media (max-width: 400px) {
+      .container-fluid{
+        padding-right:0%!important;
+        padding-left:0%!important;
+      }
+      .row,
+      .row-fluid {    
+        padding : 35% 0%
+      }
+      .row-fluid .span4{
+        width: 100%!important;
+      }  
+      .row-fluid .span9{
+        width: 74%!important;
+      }  
+      .row-fluid .span10{
+        width: 120%!important;
+      }    
+      .hero-unit {
+        padding:10%!important;
+      }
+      
+  }

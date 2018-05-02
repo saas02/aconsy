@@ -78,7 +78,7 @@
     <?php
 	$Sql1="select max(id_jornada) from jornada";
 			$reultmax_id_vehiculo=$link->query($Sql1); 
-                        $arregloconsulta = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC);
+            $arregloconsulta = $reultmax_id_vehiculo->fetch_all(MYSQLI_ASSOC);
 			//$datos_max_id_vehiculo=mysql_fetch_array($reultmax_id_vehiculo);
 			$idjornada=($arregloconsulta[0]['max(id_jornada)'])+1;
                        

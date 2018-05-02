@@ -55,14 +55,19 @@ function letra(e) { // 1
 	<?php
 	include("\..\web-app\conexion.php");
 	$link=Conectar();   
-	$result = query("SELECT * FROM curso", $link);
-	if ($row = mysql_fetch_array($result)){
-	do 	{
-	echo "<option value=".$row["id_curso"].">".$row["codigo"].' - '.$row["nombre"]."</option>";
-	} while ($row = mysql_fetch_array($result));
-	} else {
-	echo "¡ La base de datos está vacia !";
-	}
+	$result = $link->query("SELECT * FROM curso");
+        $arregloconsulta = $result->fetch_all(MYSQLI_ASSOC);
+        foreach ($arregloconsulta as $key => $arreglo){
+            echo "<option value=".$arreglo["id_curso"].">".$arreglo["codigo"].' - '.$arreglo["nombre"]."</option>";
+        }
+//        
+//	if ($row = mysql_fetch_array($result)){
+//	do 	{
+//	echo "<option value=".$row["id_curso"].">".$row["codigo"].' - '.$row["nombre"]."</option>";
+//	} while ($row = mysql_fetch_array($result));
+//	} else {
+//	echo "¡ La base de datos está vacia !";
+//	}
 	?>
 	</select>
 	</td>

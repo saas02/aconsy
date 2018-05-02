@@ -25,7 +25,7 @@ echo "<script language='JavaScript'>
                 alert('Se Elimino La Ficha: ".$id."'); 
                 window.location='administarCurso.php';
                 </script>"; 
-$delete= query ("DELETE from curso where codigo=".$id."",$link);
+$delete= $link->query ("DELETE from curso where codigo=".$id."");
 ?>
 
 <table border="0" align="center"class="table table-condensed">

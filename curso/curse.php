@@ -23,7 +23,7 @@
 
  
 <?php 
-	
+
 	$id_curso=$_POST['newUser'];
 	$nombre=$_POST['newCurse'];
 	
@@ -38,11 +38,18 @@
 	{
 		include("\..\web-app\conexion.php");
 	$link=Conectar();
-	$sql=query ("select max(id_curso) from curso ",$link);
-	$row=mysql_fetch_array($sql);
-	$idmax=$row[0]+1;
-	$sql1=query ("select * from curso where codigo=".$id_curso." ",$link);
-	$row1=mysql_num_rows($sql1);
+        
+	$sql= $link->query ("select max(id_curso) from curso ");
+        $row = $sql->fetch_all(MYSQLI_ASSOC);
+        //var_dump($row); die;
+	//$row=mysql_fetch_array($sql);
+	//$idmax=$row[0]+1;
+        $idmax=($row[0]['max(id_curso)'])+1;
+        // var_dump($idmax); die;
+	$sql1= $link->query ("select * from curso where codigo=".$id_curso."");
+        $row1=$sql1->num_rows;
+        //var_dump($row1); die;
+	
 	if ($row1>0)
 	{
 		echo "<script language='JavaScript'> 
@@ -56,9 +63,10 @@
                 alert('Se Creo La Ficha: ".$id_curso." - ".$nombre."'); 
                 window.location='administarCurso.php';
                 </script>"; 
-		$result = query("INSERT INTO curso (id_curso, codigo, nombre) VALUES (".$idmax.",".$id_curso.",'".$nombre."')", $link);
+		$result = $link->query("INSERT INTO curso (id_curso, codigo, nombre) VALUES (".$idmax.",".$id_curso.",'".$nombre."')");
+            
 	}
-	};		
+    };		
 ?>
    	</p>
 	</div>

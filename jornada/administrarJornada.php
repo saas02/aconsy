@@ -45,8 +45,8 @@
 	</div>
     <?php
 		$Sql1=$link->query("select id_jornada, nombre from jornada ");
-		$arregloconsulta = $Sql1->fetch_all(MYSQLI_ASSOC); 
-		$x=count($arregloconsulta);//contar los datos de un arreglo
+		$arregloconsulta = $Sql1->fetch_all(MYSQLI_ASSOC);
+		$x=$Sql1->num_rows;//contar los datos de un arreglo
 		/*$result_query=query($Sql1,$link);
 		while ($datosid_jornada[] = mysql_fetch_array($result_query)){}
 		$Sql="select id_jornada from jornada ";

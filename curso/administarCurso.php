@@ -72,43 +72,39 @@ var conf = confirm("¿Está seguro de Eliminar?")
 <select name="miSelect" style="width:450px" align="center">
 
 <?php 
-
-                if (isset($_SESSION['rol'])){
-                  if($_SESSION['rol']==1)
-              echo "Buscar Usuario";
-                      else
-              echo 
-                      "<script language='JavaScript'> 
-                      alert('Usuario No Autorizado'); 
-                      window.location='../index.php';
-                      </script>"; 
+       
+    if (isset($_SESSION['rol'])){
+        if($_SESSION['rol']==1)
+            echo "Buscar Usuario";
+        else
+            echo 
+                "<script language='JavaScript'> 
+                    alert('Usuario No Autorizado'); 
+                    window.location='../index.php';
+                </script>"; 
       
-                  }else{
-                        echo 
-                                  "<script language='JavaScript'> 
-                                  alert('Usuario No Autorizado'); 
-                                  window.location='../index.php';
-                                  </script>"; 
-                          
-                          }
-      ?>
+        }else{
+            echo 
+                "<script language='JavaScript'> 
+                    alert('Usuario No Autorizado'); 
+                    window.location='../index.php';
+                </script>";         
+            }
+?>
 
 
 <?php
 
 include("\..\web-app\conexion.php");
 $link=Conectar();   
-$result = query("SELECT * FROM curso", $link);
-if ($row = mysql_fetch_array($result)){
-do 	{
-echo "<option value=".$row["codigo"].">".$row["codigo"].' - '.$row["nombre"]."</option>";
+$result = $link-> query("SELECT * FROM curso");
+$arregloconsulta = $result->fetch_all(MYSQLI_ASSOC);
 
-	} while ($row = mysql_fetch_array($result));
-
-} else {
-
-echo "¡ La base de datos está vacia !";
+foreach ($arregloconsulta as $key => $arreglo){
+        
+    echo "<option value=".$arreglo["codigo"].">".$arreglo["codigo"].' - '.$arreglo["nombre"]."</option>";
 }
+
 ?>
 </select>
 </td>

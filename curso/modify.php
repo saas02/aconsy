@@ -29,12 +29,9 @@ function validar(e) { // 1
     <h1>Modificar Curso</h1>
     <p>
 <?php 
-	
-		$id=$_POST['codigo'];
-		$name=$_POST['nombre'];
-		
-		
-	
+     	$id=$_POST['codigo'];
+	$name=$_POST['nombre'];
+
 	include("\..\web-app\conexion.php");
 	$link=Conectar();
 	if ($id=="" || $name=="")
@@ -46,18 +43,18 @@ function validar(e) { // 1
 	}
 	else 
 	{
-		$result1 = query("select * from curso where codigo=".$id."", $link);
-		$codigo=mysql_num_rows($result1);
+		$result1 = $link->query("select * from curso where codigo=".$id."");
+                $codigo = $result1->fetch_all(MYSQLI_ASSOC);
 		if ($codigo==0)
 		{
 		echo "<script language='JavaScript'> 
-         alert('El Curso No Ha Sido Ingresado');
-         window.location='administarCurso.php';
-         </script>"; 
-		}
+                      alert('El Curso No Ha Sido Ingresado');
+                      window.location='administarCurso.php';
+                      </script>";
+    }
 		else
 		{
-		$result = query("UPDATE curso set codigo=".$id.", nombre='".$name."' where codigo=".$id."", $link);
+		$result = $link->query("UPDATE curso set codigo=".$id.", nombre='".$name."' where codigo=".$id."");
 		echo "<script language='JavaScript'> 
          alert('El Curso ".$id." Se Ha Modificado Correctamente');
          window.location='administarCurso.php';

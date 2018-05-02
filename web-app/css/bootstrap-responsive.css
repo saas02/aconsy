@@ -781,8 +781,8 @@
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    margin-right: -20px;
-    margin-left: -20px;
+    margin-right: 0%;
+    margin-left: 0%;
   }
   .container-fluid {
     padding: 0;
@@ -799,10 +799,19 @@
   .container {
     width: auto;
   }
-  .row-fluid {
-    width: 100%;
-  }
   .row,
+  .row-fluid {    
+    padding : 15% 0%
+  }
+  .row-fluid .span4{
+    width: 100%!important;
+  }  
+  .row-fluid .span9{
+    width: 70%!important;
+  }  
+  .row-fluid .span10{
+    width: 120%!important;
+  }  
   .thumbnails {
     margin-left: 0;
   }

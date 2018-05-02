@@ -69,7 +69,7 @@
                         <tr>
                             <td colspan="2">
 
-                                <select name='id_jornada' size='1'>
+                                <select name='Tipo_jornada' size='1'>
                                 	<?php
 										if ($x==0)
 										{
@@ -89,10 +89,10 @@
 						</tr>
 						<tr>
                             <td align="center">
-                            	<input class='btn btn-danger' type="submit" value="Ver" onclick=this.form.action='administrarJornadaVer.php' />
+                            	<input class='btn btn-danger' type="submit" value="Ver" onclick="this.form.action='administrarJornadaVer.php'" />
                             </td>
                            	<td align="center">
-                            	<input class='btn btn-danger' type="submit" value="Editar" onclick=this.form.action='administrarJornadaEditar.php'  />
+                            	<input class='btn btn-danger' type="submit" value="Editar" onclick="this.form.action='administrarJornadaEditar.php'"  />
                             </td>
                         </tr>
                     </table>

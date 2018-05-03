@@ -1081,7 +1081,7 @@
            background-color: inherit;
        }
        tr td:first-child {
-           background: #f0f0f0;
+           background: #f0f0f000;
            font-weight:bold;
            font-size:1.3em;
        }

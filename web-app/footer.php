@@ -10,9 +10,10 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/aconsy/web-app/js/jquery-1.8.1.js"></script>
+<!--<script src="/aconsy/web-app/js/jquery-1.8.1.js"></script>-->
+<!--<script src="/aconsy/web-app/js/jquery-1.12.4.js"></script>
 <script src="/aconsy/web-app/js/bootstrap.js"></script>
-<script src="/aconsy/web-app/js/bootstrap.min.js"></script>
+<script src="/aconsy/web-app/js/bootstrap.min.js"></script>-->
 <!--<script src="/web-app/js/bootstrap-alert.js"></script>
 <script src="/web-app/js/bootstrap-modal.js"></script>
 <script src="/web-app/js/bootstrap-dropdown.js"></script>

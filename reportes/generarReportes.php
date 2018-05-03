@@ -3,14 +3,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>ACONSY</title>
-        <link href="../web-app/default.css" rel="stylesheet" type="text/css" />
-    </head>
-
-    <body>
-  	<?php 
+        <link href="../web-app/default.css" rel="stylesheet" type="text/css" />               
+        <?php 
 	include("../web-app/header.php");
 	include("../web-app/sidebar.php"); 
 	?>
+        <script>
+        $( function() {
+            $('#datetimepicker1').datetimepicker({
+                language: 'en'
+            });
+        } );
+        </script>
+    </head>
+
+    <body>
+  	
     <h1>
 	<?php 
 	 
@@ -80,13 +88,30 @@
 			<td>
 			<input class=" btn btn-danger" type="submit" value="Reporte" onclick="this.form.action='ingresos.php'">
 			</td>
-			<tr>
+                        <tr>
+			<td>Formulario</td>
+			<td>
+                            
+                                <div id="datetimepicker1" class="input-append date">
+                                  <input readonly data-format="dd/MM/yyyy hh:mm:ss" id="formulario" name="formulario" type="text"></input>
+                                  <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                    </i>
+                                  </span>
+                                </div>
+                            
+                        </td>
+			<td>
+			<input class=" btn btn-danger" type="submit" value="Consultar" onclick="this.form.action='reportesFormulario.php'">
+			</td>
+			</tr>
+<!--			<tr>
 			<td>Vehiculos</td>
 			<td><input type="text" name="vehiculos" placeholder="Documento Usuario"></td>
 			<td>
 			<input class=" btn btn-danger" type="submit" value="Reporte" onclick="this.form.action='reportesVehiculo.php'">
 			</td>
-			</tr>
+			</tr>-->
 		</tr>
 		</tr>
 		</table>
@@ -97,5 +122,6 @@
      ?>
      
 </div>
+
     </body>
 </html>

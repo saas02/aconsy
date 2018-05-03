@@ -8,6 +8,15 @@
         <meta name="author" content="">
         <link href="/aconsy/web-app/default.css" rel="stylesheet">
         <link href="/aconsy/web-app/img/huella.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+        <link rel="stylesheet" href="/aconsy/web-app/css/bootstrap-datetimepicker.min.css"> 
+        
+        <script src="/aconsy/web-app/js/jquery-1.12.4.js"></script>
+        <script src="/aconsy/web-app/js/jquery-ui.js"></script>
+        <script src="/aconsy/web-app/js/bootstrap.js"></script>
+        <script src="/aconsy/web-app/js/bootstrap.min.js"></script>
+        <script src="/aconsy/web-app/js/bootstrap-datetimepicker.min.js"></script>
+        
     </head>
 
     <body>

@@ -1071,7 +1071,7 @@
         padding:10%!important;
       }
       
-      table {
+/*      table {
            width:100%;
        }
        thead {
@@ -1093,6 +1093,6 @@
            content: attr(data-th);
            display: block;
            text-align:center;
-       }
+       }*/
       
   }

@@ -15,7 +15,7 @@ include("../web-app/sidebar.php");
 ?>
 <table border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
     <tr>
-	<td colspan="2"><img src="/Aconsy/web-app/img/uneseforem.JPG" height="400" width="800" ></td>
+	<td colspan="2"><img src="/aconsy/web-app/img/uneseforem.JPG" height="400" width="800" ></td>
 	</tr>
 	<tr>
 	</tr>

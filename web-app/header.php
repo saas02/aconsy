@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="web-app/default.css" rel="stylesheet">
-        <link href="web-app/img/huella.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+        <link href="/aconsy/web-app/default.css" rel="stylesheet">
+        <link href="/aconsy/web-app/img/huella.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     </head>
 
     <body>

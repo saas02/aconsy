@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>ACONSY</title>
-<link href="..\web-app\default.css" rel="stylesheet" type="text/css" />
+<link href="../web-app/default.css" rel="stylesheet" type="text/css" />
    <link href="/ACONSY/web-app/img/huella.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
 

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>ACONSY</title>
-<link href="..\web-app\default.css" rel="stylesheet" type="text/css" />
+<link href="../web-app/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function numero(e) { // 1
     tecla = (document.all) ? e.keyCode : e.which; // 2

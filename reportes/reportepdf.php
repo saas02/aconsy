@@ -165,25 +165,26 @@ FROM ingreso, ingreso_usuario, usuario
 WHERE ingreso.id_ingreso = ingreso_usuario.id_ingreso
 AND usuario.id_usuario = ingreso_usuario.id_usuario
 AND usuario.cedula= '$user'
-AND DATE_FORMAT(ingreso.fecha_entrada,'%Y-%m-%d %H:%i:%s') BETWEEN '$inicio' AND '$fin'";
+AND ingreso.fecha_entrada >= '".date("Y-m-d 00:00:00", strtotime($inicio))."' AND ingreso.fecha_entrada <= '".date("Y-m-d 24:00:00", strtotime($fin))."'";
 $reporte = $link->query($newConsulta);
 $numfilas = $reporte->num_rows;
+$filas = $reporte->fetch_all(MYSQLI_ASSOC);
+
 for ($i=0; $i<$numfilas; $i++)
-		{
-			$filas = $reporte->fetch_all(MYSQLI_ASSOC);
+		{			
 			$pdf->SetFont('Arial','',10);
 			
 			if($i%2 == 1)
 			{
 				$pdf->SetFillColor(300,300,300);
     			$pdf->SetTextColor(0);
-				$pdf->Row(array($filas['fecha_entrada'], $filas['fecha_salida'], $filas['cedula'], $filas['nombres'],$filas['primer_apellido'].' '.$filas['segundo_apellido']));
+				$pdf->Row(array($filas[$i]['fecha_entrada'], $filas[$i]['fecha_salida'], $filas[$i]['cedula'], $filas[$i]['nombres'],$filas[$i]['primer_apellido'].' '.$filas[$i]['segundo_apellido']));
 			}
 			else
 			{
 				$pdf->SetFillColor(300,300,300);
     			$pdf->SetTextColor(0);
-				$pdf->Row(array($filas['fecha_entrada'], $filas['fecha_salida'], $filas['cedula'], $filas['nombres'],$filas['primer_apellido'].' '.$filas['segundo_apellido']));
+				$pdf->Row(array($filas[$i]['fecha_entrada'], $filas[$i]['fecha_salida'], $filas[$i]['cedula'], $filas[$i]['nombres'],$filas[$i]['primer_apellido'].' '.$filas[$i]['segundo_apellido']));
 			}
 		}
 $pdf->Output();

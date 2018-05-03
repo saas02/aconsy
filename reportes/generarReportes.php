@@ -93,7 +93,7 @@
 			<td>
                             
                                 <div id="datetimepicker1" class="input-append date">
-                                  <input readonly data-format="dd/MM/yyyy hh:mm:ss" id="formulario" name="formulario" type="text"></input>
+                                  <input readonly data-format="yyyy-MM-dd" id="formulario" name="formulario" type="text"></input>
                                   <span class="add-on">
                                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                                     </i>

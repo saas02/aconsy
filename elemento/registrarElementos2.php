@@ -49,32 +49,33 @@
 	$Tipo = $_POST["Tipo"];
 	
 	include("\..\web-app/conexion.php");
-	$link=Conectar();   
-	$resIDusuario=query("select id_usuario from usuario where cedula = ".$CC." ;", $link);
-	$Id_usuario = mysql_fetch_array($resIDusuario);
+                    $link = Conectar();
+                    $resIDusuario = $link->query("select id_usuario from usuario where cedula = " . $CC . " ;");
+                    //$Id_usuario = mysql_fetch_array($resIDusuario);
+                    $Id_usuario = $resIDusuario->fetch_all(MYSQLI_ASSOC);
 	
-	$maxElement = query("select MAX(id_elemento) from elemento", $link);
-	$Id_elemento = mysql_fetch_array($maxElement);
-	$Id_elemento[0] =$Id_elemento[0]+1;
+                    $maxElement = $link->query("select MAX(id_elemento) from elemento");
+                    $Id_elemento = $maxElement->fetch_all(MYSQLI_ASSOC);
+                    //$Id_elemento = mysql_fetch_array($maxElement);
+                    $Id_elemento[0] = ($Id_elemento[0]['MAX(id_elemento)']) + 1;                    
  
+                    $resul = $link->query("INSERT INTO elemento (id_elemento, marca, serial, descripcion, tipo, codigo_barras) VALUES (" . $Id_elemento[0] . ", '" . $Marca . "', '" . $Serial . "', '" . $Descripcion . "', '" . $Tipo . "', '" . $codigo = substr(md5($Id_elemento[0] . $Serial . $Id_usuario[0]['id_usuario']), -10) . "');");
 
-$resul=query("INSERT INTO elemento (id_elemento, marca, serial, descripcion, tipo, codigo_barras) VALUES (".$Id_elemento[0].", '".$Marca."', '".$Serial."', '".$Descripcion."', '".$Tipo."', '".$codigo = substr(md5($Id_elemento[0].$Serial.$Id_usuario[0]), -10)."');", $link);
+                    if ($resul != false){ 
+                        $resul1 = $link->query("INSERT INTO usuario_elemento (id_usuario, id_elemento) VALUES (" . $Id_usuario[0]['id_usuario'] . "," . $Id_elemento[0] . ")");
+                    }
 
-	if($resul != false)
-		$resul1=query("INSERT INTO usuario_elemento (id_usuario, id_elemento) VALUES (".$Id_usuario[0].",".$Id_elemento[0].")", $link);
-
-	if($resul != false and $resul1 != false ){
+                    if ($resul != false || $resul1 != false) {
 			echo "<script language='JavaScript'> 
 				 alert('Datos Ingresados'); 
 				 window.location='registrarElementos.php';
-				 </script>";}
-	else{
-			echo	"<script language='JavaScript'> 
+				 </script>";
+                    } else {
+                        echo "<script language='JavaScript'> 
 				 alert('Error en la insercion de datos'); 
 				 window.location='registrarElementos.php';
-				 </script>";}
-		
-		
+				 </script>";
+                    }
     ?>
         
 

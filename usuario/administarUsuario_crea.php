@@ -132,12 +132,14 @@ n.focus();
     
            <select name="Jornada">
 			   <?php
-                $consultajornada= query("SELECT id_jornada,nombre FROM jornada");
-                $numeroposiciones= mysql_num_rows($consultajornada);
-                while ($filas = mysql_fetch_array($consultajornada))
-				{
+                $consultajornada= $link->query("SELECT id_jornada,nombre FROM jornada");
+                $numeroposiciones = $consultajornada->fetch_all(MYSQLI_ASSOC);
+                //$numeroposiciones= mysql_num_rows($consultajornada);
+                
+                foreach ($numeroposiciones as $key => $filas){
                   echo "<option  value=".$filas["id_jornada"].">".$filas["nombre"]."</option>"; 
                 }
+
                ?>
    		
         </select>

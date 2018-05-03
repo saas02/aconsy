@@ -41,13 +41,12 @@ $resultuser=$link->query($user);
 @$datos=$resultuser->fetch_all(MYSQLI_ASSOC);  
 $dato=$datos[0]['nombres']." ".$datos[0]['primer_apellido']." ".$datos[0]['segundo_apellido']." C.C ".$datos[0]['cedula'];
 
-
 $query="SELECT ingreso.fecha_entrada, ingreso.fecha_salida, usuario.cedula, usuario.nombres, usuario.primer_apellido, usuario.segundo_apellido
 FROM ingreso, ingreso_usuario, usuario
 WHERE ingreso.id_ingreso = ingreso_usuario.id_ingreso
 AND usuario.id_usuario = ingreso_usuario.id_usuario
 AND usuario.cedula=".$usuario."
-AND DATE_FORMAT(ingreso.fecha_entrada,'%Y-%m-%d %H:%i:%s') BETWEEN '".$inicio."' AND '".$fin."'";
+AND ingreso.fecha_entrada >= '".date("Y-m-d 00:00:00", strtotime($inicio))."' AND ingreso.fecha_entrada <= '".date("Y-m-d 24:00:00", strtotime($fin))."'";
 $result_query=$link->query($query);
 $reg=$result_query->num_rows;
 $ediciones = $result_query->fetch_all(MYSQLI_ASSOC);

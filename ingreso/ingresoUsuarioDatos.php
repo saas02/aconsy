@@ -43,6 +43,7 @@
 		<?php
 			include("../web-app/conexion.php");
 			$link=Conectar();  
+                        
 			$cc_usu=$_POST["cc_usuario"];
 			@$variable=$_POST["variable"];                          
 			$Sql="select id_usuario from usuario where cedula = ".$cc_usu." ";

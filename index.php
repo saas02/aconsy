@@ -35,20 +35,20 @@ include("web-app/sidebar.php");
             <p>El registro de elementos a la institución es una de las principales características de ACONSY. A través del número de identificación del usuario o de codigos de barras especificos para cada elemento, se llevara un registro de elementos dentro de la organización.</p>
               <p><a class="btn btn-inverse" href="/ACONSY/elemento/registrarElementos.php">Continuar &raquo;</a></p>
         </div><!--/span-->
-        <div class="span4">
+<!--        <div class="span4">
             <h2>Vehiculos</h2>
             <p>El sistema muestra y registra los datos de los vehículos que ingresen a la institución pertenecientes a un usuario, o cambiar uno ya existente, asignando un garaje según la jornada y la disponibilidad de la organización.</p>
               <p><a class="btn btn-inverse" href="/ACONSY/vehiculo/registrarVehiculos.php">Continuar &raquo;</a></p>
-        </div><!--/span-->
+        </div>/span-->
     </div><!--/row-->
 
 
     <div class="row-fluid">
-        <div class="span4">
+<!--        <div class="span4">
             <h2>Garajes</h2>
             <p>Permite asignar nuevos garajes según nuevos espacios que brinde la institución o espacios que no se encuentren registrados, también se puede ver la disponibilidad que tiene cada garaje en un horario determinado.</p>
               <p><a class="btn btn-inverse" href="/ACONSY/garaje/asignarGaraje.php">Continuar &raquo;</a></p>
-        </div><!--/span-->
+        </div>/span-->
         <div class="span4">
             <h2>Reportes</h2>
             <p> Los Reportes del Sistema ACONSY permiten brindar una serie de consultas y reportes de control que son de gran ayuda para la administración de los usuarios. Pueden ser filtrados por rango de fechas facilitando la selección del período.</p>

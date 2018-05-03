@@ -14,7 +14,7 @@
         ?>
         <table border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
             <tr>
-                <td colspan="2" align="center"><img src="\Aconsy\web-app\img\uneseforem.jpg" height="300" width="500" ></td>
+                <td colspan="2" align="center"><img src="/Aconsy/web-app/img/uneseforem.jpg" height="300" width="500" ></td>
                 <td></td>
             </tr>
             <tr>

@@ -41,7 +41,7 @@
         ?>
    	</p>
 	</div>
-        <form name='formulario' method="post" action="cargaimagen.php">
+        <form name='formulario' method="post" action="cargaimagen.php" enctype="multipart/form-data">
             <table align="center" border="0">
                 <tr>
                     <td>
@@ -133,8 +133,7 @@
                                                        
                                                         <tr>
                                                         <td align="left" for="imagen">Imagen:</td>
-                                                        <td><input name="imagen" type="file"  id="imagen" /></td><tr>
-                                                        <td><input type="submit" name="subir" value="Subir Imagen"/></td>
+                                                        <td><input type="file" name="imagen[]" value="" multiple></td><tr>                                                        
                                                         </tr></tr>
                                                         <tr>
                                                         <td colspan="2" align="center"><input class="btn btn-danger" name="insertar" type="submit" value="Guardar" /> 

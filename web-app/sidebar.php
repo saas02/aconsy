@@ -18,6 +18,7 @@
             <li><a href="/aconsy/usuarioCurso/usuarioCurso.php">Clases</a></li>
             <li><a href="/aconsy/jornada/administrarJornada.php">Jornadas</a></li>
             <li><a href="/aconsy/formulario/formulario.php">Formulario</a></li>
+            <li><a href="/aconsy/formuimagen/formuimagen.php">Formulario Carga De Imagenes</a></li>
         </ul>
     </div><!--/.well -->
     <img src="/aconsy/web-app/img/aconsysinfondo.png" />

@@ -3,10 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/aconsy/web-app/conexion.php</file>
-            <file>file:/C:/wamp64/www/aconsy/jornada/administrarJornadaVer.php</file>
-            <file>file:/C:/wamp64/www/aconsy/jornada/administrarJornada.php</file>
-            <file>file:/C:/wamp64/www/aconsy/jornada/administrarJornadaEditar.php</file>
+            <file>file:/C:/wamp/www/aconsy/ingreso/ingresoUsuarioDatos.php</file>
+            <file>file:/C:/wamp/www/aconsy/elemento/registrarElementos2.php</file>
+            <file>file:/C:/wamp/www/aconsy/formulario/formulario.php</file>
+            <file>file:/C:/wamp/www/aconsy/reportes/reportesFormulario.php</file>
+            <file>file:/C:/wamp/www/aconsy/reportes/generarReportes.php</file>
+            <file>file:/C:/wamp/www/aconsy/usuario/administarUsuario_crea_php.php</file>
+            <file>file:/C:/wamp/www/aconsy/usuario/administarUsuario_crea.php</file>
+            <file>file:/C:/wamp/www/aconsy/reportes/reportes.php</file>
+            <file>file:/C:/wamp/www/aconsy/reportes/reportepdf.php</file>
+            <file>file:/C:/wamp/www/aconsy/reportes/ingresos.php</file>
+            <file>file:/C:/wamp/www/aconsy/ingreso/ingresar.php</file>
+            <file>file:/C:/wamp/www/aconsy/ingreso/ingresoAutomatico.php</file>
+            <file>file:/C:/wamp/www/aconsy/ingreso/ingresarElementoAutomatico.php</file>
+            <file>file:/C:/wamp/www/aconsy/elemento/buscarElemento.php</file>
+            <file>file:/C:/wamp/www/aconsy/formulario/formulario2.php</file>
+            <file>file:/C:/wamp/www/aconsy/jornada/administrarJornada.php</file>
         </group>
     </open-files>
 </project-private>

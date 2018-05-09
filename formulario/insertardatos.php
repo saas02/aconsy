@@ -29,13 +29,14 @@
 	$link=Conectar();  
       
 	$cc_usu=$_SESSION['cedula'];
+ 
 	                         
 	$Sql="select id_usuario from usuario where cedula = ".$cc_usu."";
 	$result=$link->query($Sql);
 	$id_usu = $result->fetch_all(MYSQLI_ASSOC);
         
         if($result->num_rows > 0){
-            var_dump($_POST['fecha']);
+            
             date_default_timezone_set("America/Bogota" ) ; 		            
             $fecha = $_POST['fecha'];
             $idUsuario = $id_usu[0]['id_usuario'];
@@ -47,30 +48,48 @@
             $senal = $_POST['senal'];
             $braile = $_POST['braile'];
             $bandera = $_POST['bandera'];
-            $consulta = "INSERT INTO formulario (
-                        id_usuario ,
-                        fecha ,
-                        ruta ,
-                        nombre_ruta ,
-                        cenefa ,
-                        vado ,
-                        zona ,
-                        senal ,
-                        braile ,
-                        bandera
-                        )
-                        VALUES (".$idUsuario.",'".$fecha."','".$ruta."','".$nombreRuta."','".$cenefa."',
-                        '".$vado."','".$zona."','".$senal."','".$braile."','".$bandera."')";
+            $idform = $_POST['idform'];
             
-            $insertar=$link->query($consulta);	
-            if($insertar){
+            $consulta = "UPDATE  formulario SET 
+                        id_usuario=".$idUsuario." ,
+                        fecha='".$fecha."' ,
+                        ruta='".$ruta."' ,
+                        nombre_ruta='".$nombreRuta."' ,
+                        cenefa='".$cenefa."' ,
+                        vado='".$vado."' ,
+                        zona='".$zona."' ,
+                        senal='".$senal."' ,
+                        braile='".$braile."' ,
+                        bandera='".$bandera."',
+                        estado=1
+                        WHERE id_formulario=".$idform."
+                       ";
+//            echo "<pre>";
+//            print_r($consulta);
+//            echo "</pre>";
+//             die;
+            $insertar=$link->query($consulta);
+            
+            
+            $newId= mysqli_insert_id($link);
+           // echo "El último registro insertado tiene el id %d\n", mysqli_insert_id($link);
+
+            if(isset($insertar)){
                  echo
                 "<script language='JavaScript'> 
                        alert('Registro efecutado correctamente'); 
                        window.location='../index.php';
                        </script>";
-            }else{
-                
+                 
+//            $Sql2 = "select * from formulario where id_formulario =".$newId."";            
+//            $result2 = $link->query($Sql2);            
+//            $id_usu2 = $result2->fetch_all(MYSQLI_ASSOC);
+            
+            }
+
+         
+            
+            else{
                  echo
                 "<script language='JavaScript'> 
                     alert('Ocurrio Un error al registrar'); 
@@ -90,4 +109,6 @@
     
 </body>
 </html>
+
+
 

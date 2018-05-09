@@ -67,7 +67,7 @@
         ?>
    	</p>
 	</div>
-        <form name='formulario' method="post" action="formulario2.php">
+        <form name='formulario' method="post" action="formulario_previsualizar.php">
             <table align="center" border="0">
                 <tr>
                     <td>
